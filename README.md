@@ -27,12 +27,21 @@ pip install pandas
 pip install pywin32 # COM API 연결
 pip install pySW # pywin32 래퍼
 
-# 솔리드웍스 설치경로를 path로 잡아줄 것 (굳이 해 줄 필요는 없음)
-set path=C:\Program Files\SOLIDWORKS Corp\SOLIDWORKS\
-
-# pySW 버그 잡아줄 것 (함수명이 제멋대로 바뀌어 있어서)
+# pySW 버그 잡아줄 것 (함수명이 제멋대로 바뀌어 있기 때문)
 code C:\ProgramData\Anaconda3\Lib\site-packages\pySW\commSW.py
 ```
+
+
+
+### Command
+
+```bash
+cd D:/git/pySolidworks
+python pySolidworks.py D:/git/pySolidworks/EX1/EX1.xlsx
+python pySolidworks.py D:/git/pySolidworks/H1/H1_SKEL.xlsx
+```
+
+Q
 
 
 
