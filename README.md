@@ -1,17 +1,16 @@
 
 
-# Solidworks with Python
+# pySolidworks
 
 _Handling .SLDPRT with Global Variables_
 
 
 
-## Implementation objectives
+## Purpose
 
-* Read Excel File
-* Read the SLDPRT file written to the EXCEL file
-* Apply Parameters in the EXCEL file to change the SLDPRT file
-* Save the SLDPRT file with the name in the EXCEL file
+* Read .xlsx File
+* Apply Parameters in the .xlsx file to change the .SLDPRT file
+* Save new .SLDPRT file(s) into sub-driectories
 
 
 
@@ -19,21 +18,28 @@ _Handling .SLDPRT with Global Variables_
 
 * MS Windows 10
 * Solidworks
-* Anaconda3
+* Anaconda3 or Python3
 
 ```bash
-pip install Numpy
+pip install numpy
 pip install pandas
 pip install pywin32 # COM API 연결
 pip install pySW # pywin32 래퍼
 
 # pySW 버그 잡아줄 것 (함수명이 제멋대로 바뀌어 있기 때문)
 code C:\ProgramData\Anaconda3\Lib\site-packages\pySW\commSW.py
+code C:\Users\dhkima\AppData\Roaming\Python\Python39\EXE\Lib\site-packages\pySW\commSW.py
+# Replace
+#   updatePrt --> update
+#   getGlobalVariables --> getGlobalVars
+#   SW_PROCESS_NAME = r'C:/Program Files/SOLIDWORKS Corp/SOLIDWORKS/\  --> SW_PROCESS_NAME = r'C:/Program Files/SOLIDWORKS Corp/SOLIDWORKS/SLDWORKS.exe';
+#   SLDWORKS.exe'; --> Remove
+
 ```
 
 
 
-### Command
+## Command to test
 
 ```bash
 cd D:/git/pySolidworks
@@ -41,7 +47,21 @@ python pySolidworks.py D:/git/pySolidworks/EX1/EX1.xlsx
 python pySolidworks.py D:/git/pySolidworks/H1/H1_SKEL.xlsx
 ```
 
-Q
+
+
+## Setup
+
+* Double click `Resister_ContextMenu.reg`
+
+
+
+## How to use
+
+* Make `XXX.xlsx` and `XXX.SLDPRT` (`XXX` is user defined)
+* Make Global Variables in `XXX.SLDPRT`
+* Make Tables  in `XXX.xlsx`  with Global Variables
+* Choose `pySolidworks` in Context Menu on `XXX.xlsx` by Windows File Manger
+* Wait to Finish
 
 
 

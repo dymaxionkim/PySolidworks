@@ -11,6 +11,11 @@ DF1 = pd.read_excel(INPUT,skiprows=2)
 # SEED SLDPRT File Name
 SEED = os.path.splitext(INPUT)[0]
 SEED_BASENAME = os.path.basename(SEED)
+SEED_DIR = os.path.dirname(SEED)
+
+if os.path.exists(SEED+".SLDPRT") == False:
+    print("There is no "+SEED+".SLDPRT file.")
+    sys,exit()
 
 for i in range(len(DF1.index)):
     # Start SLDWORKS
@@ -32,9 +37,13 @@ for i in range(len(DF1.index)):
                 SW.modifyGlobalVar(GVAR_NAME[k],DF1.iloc[i,j],'mm');
     SW.update();
     # Save Modified SLDPRT
-    if not os.path.exists(DF1.OUTPUT_DIRECTORY[i]):
-        os.makedirs(DF1.OUTPUT_DIRECTORY[i])
-    SW.save(DF1.OUTPUT_DIRECTORY[i] ,SEED_BASENAME,'SLDPRT');
+    SAVE_DIR = SEED_DIR+"/"+str(i+1)
+    SAVE_FILE = SAVE_DIR+"/"+SEED_BASENAME+".SLDPRT"
+    if not os.path.exists(SAVE_DIR):
+        os.makedirs(SAVE_DIR)
+    if os.path.exists(SAVE_FILE):
+        os.remove(SAVE_FILE)
+    SW.save(SAVE_DIR,SEED_BASENAME,'SLDPRT');
     # Shutdown SLDWORKS
     SW.shutSW();
     time.sleep(1);
