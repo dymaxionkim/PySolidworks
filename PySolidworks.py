@@ -15,7 +15,7 @@ SEED_DIR = os.path.dirname(SEED)
 
 if os.path.exists(SEED+".SLDPRT") == False:
     print("There is no "+SEED+".SLDPRT file.")
-    sys,exit()
+    sys.exit()
 
 for i in range(len(DF1.index)):
     # Start SLDWORKS
