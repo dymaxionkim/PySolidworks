@@ -28,6 +28,9 @@ if os.path.exists(PATH_STP) == False:
 BASENAME = FILE_LIST_SLDDRW.copy()
 for i in range(len(FILE_LIST_SLDDRW)):
     BASENAME[i] = os.path.splitext(FILE_LIST_SLDDRW[i])[0]
+BASENAME_STP = FILE_LIST_SLDPRT.copy()
+for i in range(len(FILE_LIST_SLDPRT)):
+    BASENAME_STP[i] = os.path.splitext(FILE_LIST_SLDPRT[i])[0]
 
 # Start Solidworks
 swApp = win32com.client.Dispatch('SldWorks.Application')
@@ -39,8 +42,8 @@ print("1. Export PDF,DXF from")
 for i in range(len(FILE_LIST_SLDDRW)):
     print(PATH_INPUT+'/'+FILE_LIST_SLDDRW[i])
     Model = swApp.OpenDoc(PATH_INPUT+'/'+FILE_LIST_SLDDRW[i],3)
-    Result_PDF = Model.SaveAs(PATH_PDF + '/' + BASENAME[i] + '.PDF')
-    Result_DXF = Model.SaveAs(PATH_DXF + '/' + BASENAME[i] + '.DXF')
+    Result_PDF = Model.SaveAs(PATH_PDF+'/'+BASENAME[i]+'.PDF')
+    Result_DXF = Model.SaveAs(PATH_DXF+'/'+BASENAME[i]+'.DXF')
     swApp.CloseAllDocuments(True)
 print("----------------")
 
@@ -48,11 +51,8 @@ print("----------------")
 print("2. Export STP from")
 for i in range(len(FILE_LIST_SLDPRT)):
     print(PATH_INPUT+'/'+FILE_LIST_SLDPRT[i])
-    if os.path.exists(PATH_INPUT+'/'+ BASENAME[i] + '.SLDPRT') == True:
-        Model = swApp.OpenDoc(PATH_INPUT+'/'+ BASENAME[i] + '.SLDPRT',1)
-    elif os.path.exists(PATH_INPUT+'/'+ BASENAME[i] + '.sldprt') == True:
-        Model = swApp.OpenDoc(PATH_INPUT+'/'+ BASENAME[i] + '.sldprt',1)
-    Result_STP = Model.SaveAs(PATH_STP + '/' + BASENAME[i] + '.stp')
+    Model = swApp.OpenDoc(PATH_INPUT+'/'+FILE_LIST_SLDPRT[i],1)
+    Result_STP = Model.SaveAs(PATH_STP+'/'+BASENAME_STP[i]+'.stp')
     swApp.CloseAllDocuments(True)
 print("----------------")
 
