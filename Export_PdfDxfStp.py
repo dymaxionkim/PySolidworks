@@ -42,7 +42,7 @@ print("1. Export PDF,DXF from")
 for i in range(len(FILE_LIST_SLDDRW)):
     print(PATH_INPUT+'/'+FILE_LIST_SLDDRW[i])
     Model = swApp.OpenDoc(PATH_INPUT+'/'+FILE_LIST_SLDDRW[i],3)
-    Result_PDF = Model.SaveAs(PATH_PDF+'/'+BASENAME[i]+'.PDF')
+    Result_PDF = Model.SaveAs(PATH_PDF+'/'+BASENAME[i]+'.pdf')
     Result_DXF = Model.SaveAs(PATH_DXF+'/'+BASENAME[i]+'.DXF')
     swApp.CloseAllDocuments(True)
 print("----------------")
@@ -52,7 +52,7 @@ print("2. Export STP from")
 for i in range(len(FILE_LIST_SLDPRT)):
     print(PATH_INPUT+'/'+FILE_LIST_SLDPRT[i])
     Model = swApp.OpenDoc(PATH_INPUT+'/'+FILE_LIST_SLDPRT[i],1)
-    Result_STP = Model.SaveAs(PATH_STP+'/'+BASENAME_STP[i]+'.stp')
+    Result_STP = Model.SaveAs(PATH_STP+'/'+BASENAME_STP[i]+'.STEP')
     swApp.CloseAllDocuments(True)
 print("----------------")
 
