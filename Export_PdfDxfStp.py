@@ -10,7 +10,7 @@ FILE_LIST = os.listdir(PATH_INPUT)
 #FILE_LIST_SLDDRW = [file for file in FILE_LIST if file.endswith(".slddrw") or file.endswith(".SLDDRW")]
 FILE_LIST_SLDDRW = [file for file in FILE_LIST if (file[0:2]!="~$") and (file.endswith(".slddrw") or file.endswith(".SLDDRW")) ]
 #FILE_LIST_SLDPRT = [file for file in FILE_LIST if file.endswith(".sldprt") or file.endswith(".SLDPRT")]
-FILE_LIST_SLDPRT = [file for file in FILE_LIST if ("_SKEL.SLDPRT" in file) and (file[0:2]!="~$") and (file.endswith(".sldprt") or file.endswith(".SLDPRT")) ]
+FILE_LIST_SLDPRT = [file for file in FILE_LIST if (not "_SKEL." in file) and (file[0:2]!="~$") and (file.endswith(".sldprt") or file.endswith(".SLDPRT")) ]
 
 # Make Directories
 PATH_2D = PATH_INPUT + "/2D"
